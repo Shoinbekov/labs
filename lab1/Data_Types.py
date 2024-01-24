@@ -30,5 +30,5 @@ print(type(x))
 
 #exercise 7:
 x = True
-print(type(x))
+print(type(y))
 #bool
