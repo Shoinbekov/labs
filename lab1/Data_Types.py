@@ -18,3 +18,17 @@ x = ["apple", "banana", "cherry"]
 print(type(x))
 #list
 
+#exercise 5:
+x = ("apple", "banana", "cherry")
+print(type(x))
+#tuple
+
+#exercise 6:
+x = {"name" : "John", "age" : 36}
+print(type(x))
+#dict
+
+#exercise 7:
+x = True
+print(type(x))
+#bool
