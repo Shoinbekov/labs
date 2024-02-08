@@ -1,15 +1,62 @@
 #exercise 1:
-def is_above_average_imdb_score():
-    movie_name = input("Enter the name of the movie: ")
-    # Search for the movie in the list of movies (assuming it's available)
+def imdb_more_than_5(movie):
+    return movie.get("imdb", 0) > 5.5:
+
+for movie in movies:
+    if imdb_more_than_5(movie):
+        print(True)
+    else:
+        print(False)
+
+#exercise 2:
+def imdb_more_than_5(movie):
+    return movie.get("imdb", 0) > 5.5
+
+imdb_movie = [movie for movie in movies if imdb_more_than_5(movie)]
+for movie in imdb_movie:
+    print(f"{movie['name']} {movie['imdb'] } {movie['category']}")
+
+#exercise 3:
+def movie_category(category):
+    return [movie for movie in movies if movie['category']==category]
+
+movie_category_input = movie_category(input(""))
+print(movie_category_input)
+
+#exercise 4:
+def avg_imdb(movies):
+    num_movies = 0
+    total_score = 0
     for movie in movies:
-        if movie['name'] == movie_name:
-            if 'imdb' in movie and isinstance(movie['imdb'], (int, float)):
-                return movie['imdb'] > 5.5
-    return False
+        total_score = movie['imdb']
+        num_movies += 1
+    return total_score / num_movies
+
+average = avg_imdb(movies)
+print(average)
+
+#exercise 5:
+def movie_category(category):
+    return [movie for movie in movies if movie['category']==category]
+def avg_imdb(movies):
+    num_movies = 0
+    total_score = 0
+    for movie in movies:
+        total_score = movie['imdb']
+        num_movies += 1
+    return total_score / num_movies
+
+def avg_by_category(category):
+    movies = movie_category(category)
+    return avg_imdb(movies)
+
+
+average_score = avg_by_category(input(""))
+print(average_score)
+
 movies = [
 {
-"name": "Usual Suspects",
+"name": "Usual Suspects", 
 "imdb": 7.0,
 "category": "Thriller"
 },
@@ -84,8 +131,3 @@ movies = [
 "category": "Romance"
 }
 ]
-
-result = is_above_average_imdb_score()
-print(result)
-
-#exercise 2:
