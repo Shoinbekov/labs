@@ -1,144 +1,134 @@
 #exercise 1:
-def ounces_to_grams(ounces):
-    print(ounces*28.3495231 , 'grams')
-ounces = int(input())
-ounces_to_grams(ounces)
+def grams_to_ounces(grams):
+    ounces=28.3495231 * grams
+    return ounces
+grams = float(input())
+ounces=grams_to_ounces(grams)
+print(f"{grams} grams = {ounces} ounces")
 
-def grams_to_ounches(grams):
-    print(grams/28.3495231 , 'ounches')
-grams = int(input())
-grams_to_ounches(grams)
-
-#exercise 2:
-def to_centigrade(F):
-    print('C = ' , (5 / 9) * (F - 32), sep="")
-F = int(input())
-to_centigrade(F)
+#exercise 2: 
+def temperature(F):
+    C = (5 / 9) * (F - 32)
+    return C
+F = float(input())
+centigrade = temperature(F)
+print(f"temperature in centigrade is  {centigrade} ")
 
 #exercise 3:
 def solve(numheads, numlegs):
-    for c in range(numheads + 1):
-        r = numheads - c
-        if 4*r + 2*c == numlegs:
-            return c, r
-    return 'no solution'
-numh = int(input())
-numl = int(input())
-print(solve(numh, numl))
+    for chickens in range(numheads + 1):
+        rabbits = numheads - chickens
+        if(2 * chickens + 4 * rabbits)==numlegs:
+            return chickens, rabbits
+numheads = 35
+numlegs = 94
+result = solve(numheads, numlegs)
+print(f"chickens = {result[0]}, rabbits = {result[1]}")  
 
 #exercise 4:
-def filter_prime(listmain):
-    listb =[]
-    for i in listmain:
-        if i <= 2:
-            continue
-        t = True
-        for k in range(2, i):
-            if i % k == 0:
-                t = False
-                break
-        if t:
-            listb.append(i)
-    for i in range(len(listb)):
-        print(listb[i])
-
-lista = []
-b = 1
-number = 1
-while number != 0:
-    number = int(input())
-    if number != 0:
-        lista.append(number)
-    else:
-        break
-filter_prime(lista)
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+def filter_prime(numbers):
+    prime_numbers = [num for num in numbers if is_prime(num)]
+    return prime_numbers
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print((filter_prime(nums)))
 
 #exercise 5:
 from itertools import permutations
-
-def print_permutations(string):
-    perm = permutations(string)
+def string_perm(s):
+    perm = permutations(s)
     for p in perm:
         print(''.join(p))
-
-# Example usage:
-user_input = input("Enter a string: ")
-print_permutations(user_input)
-
+x = str(input())
+string_perm(x)
 
 #exercise 6:
-def rev(string):
-    list_of_words = string.split()
-    list_of_words.reverse()
-    for i in list_of_words:
-        print(i, end = ' ')
+def reverse_words(s):
+    words = s.split()
+    reversed_words = " ".join(reversed(words))
+    return reversed_words
 
-s = input()
-rev(s)
-
+sentence = str(input()) #or as given in example we can use "We are ready"
+reversed_sentence = reverse_words(sentence)
+print(reversed_sentence) 
+    
 #exercise 7:
-def has_33(lis):
-    for i in range(len(lis) - 2):
-        if lis[i] == lis[i + 1] == 3:
-            print('True')
-            break
-    else:
-        print('False')
-    pass
-r = 1
-lil = []
-
-#ввод с клавиатуры:
-while r != 0:
-    r = int(input())
-    if r != 0:
-        lil.append(r)
-has_33(lil)
-
-#подготовленный ввод:
-has_33([1,3,3,1])
-
-#exercise 8:
-def spy_game(array):
-    for i in range(len(array) - 2):
-        if array[i] == array[i + 1] == 0 and array[i + 2] == 7:
+def has_33(n):
+    for i in range(len(n)-1):
+        if n[i] == 3 and n[i+1] == 3:
             return True
     return False
-x = 1
-input_list = [int(x) for x in input().split()]
-print(spy_game(input_list))
+print(has_33([1, 3, 3]))
+print(has_33([1, 3, 1, 3]))
+print(has_33([3, 1, 3]))
+
+#exercise 8:
+def spy_game(nums):
+    code = [0, 0, 7]
+    index = 0
+    for num in nums:
+        if num == code[index]:
+            index += 1
+            if index == len(code):
+                return True
+    return False
+print(spy_game([1,2,4,0,0,7,5]))
+print(spy_game([1,0,2,4,0,5,7]))
+print(spy_game([1,7,2,0,4,5,0]))
 
 #exercise 9:
-def volume(r):
-    vol = float((4*3.1415926535 * pow(r,3))/3)
-    return vol
-radius = float(input())
-print(volume(radius))
+import math
+def sphere(r):
+    volume = (4/3) * math.pi * (r ** 3)
+    return volume
+n = float(input())
+print(sphere(n))
 
 #exercise 10:
-def uniq(lis):
-    lis2 = []
-    for i in range(len(lis)):
-        t = 1
-        for j in range(len(lis2)):
-            if lis[i] == lis2[j]:
-                t = 0
-                break
-        if t == 1:
-            lis2.append(lis[i])
-    return lis2
-inp_list = [int(x) for x in input().split()]
-print(uniq(inp_list))
+def unique_list(l):
+    u_list = []
+    for i in l:
+        if i not in u_list:
+            u_list.append(i)
+    return u_list
+l = [1, 2, 3, 4, 2, 3, 5, 6, 5]
+print(unique_list(l))
 
 #exercise 11:
-def palindrome(wrd):
-    return wrd == wrd[::-1]
-word = str(input())
-print(palindrome(word))
+def palindrome(p):
+    p = p.lower().replace(" ", "")
+    return p == p[::-1]
+p = str(input())
+print(palindrome(p))
 
 #exercise 12:
-def histogram(li):
-    for i in li:
-        print('*'*i)
-in_list = [int(x) for x in input().split()]
-histogram(in_list)
+def histogram(s):
+    for i in s:
+        print("*" * i)
+s = [4, 9, 7]
+print(histogram(s))
+
+#exercise 13:
+import random 
+def random_number_guess():
+    name = input("Hello! What is your name ")
+    print(f"Well, {name}, I am thinking of a number between 1 and 20.")
+    num = random.randint(1, 20)
+    num_to_guess = 0
+    while True:
+        guess = int(input("Take guess: "))
+        num_to_guess+=1
+        if guess < num:
+            print("Your guess is too low.")
+        elif guess > num:
+            print("Your guess is too high.")
+        else:
+            print(f"Good job, {name}! You guessed my number in {num_to_guess} guesses!")
+            break
+random_number_guess()
