@@ -1,6 +1,6 @@
 #exercise 1:
 def imdb_more_than_5(movie):
-    return movie.get("imdb", 0) > 5.5:
+    return movie.get("imdb", 0) > 5.5
 
 for movie in movies:
     if imdb_more_than_5(movie):
