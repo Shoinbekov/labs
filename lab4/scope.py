@@ -31,5 +31,4 @@ def myfunc():
   x = 200
   print(x)
 
-myfunc(
-)
+myfunc()
